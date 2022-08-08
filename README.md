@@ -25,11 +25,17 @@ The algorithm of sorting healthy and unhealthy skin works by first being trained
 
 3. Unzip the file. This can be done by typing sudo apt install unzip - Then, type unzip <insert name of dataset folder>
 
-4. Go into the docker container by first going to the jetson-inference folder. This can be done by doing cd jetson-inference - Then, type ./docker/run.sh
+4. Go to the Docker container by first going to the jetson-inference folder. This can be done by doing cd jetson-inference - Then, type ./docker/run.sh
 
-5. Train the AI with the dataset by doing python3 train.py --model-dir=models/<dataset folder name> data/<dataset folder name>
+5. Inside the Docker container, change directories. Type cd jetson-inference/python/training/classification - Now, we are in the classification folder. Train the AI with the dataset by doing python3 train.py --model-dir=models/<dataset folder name> data/<dataset folder name>
 
-6. Generate resnet18.onnx to process the images we want to test. This can be done by typing: python3 onnx_export.py --model-dir=models/<dataset folder name>
+6. Not changing directories, generate resnet18.onnx to process the images we want to test. This can be done by typing: python3 onnx_export.py --model-dir=models/<dataset folder name>
+
+7. Still not changing directories, set the NET and DATASET variables. Type NET=models/<dataset folder name> - Then, type DATASET=data/<dataset folder name> - These variables will be used in the command to process our images.
+
+8. Make a place for our output files to go. Type $DATASET/test_output_<Name of Category 1> $DATASET/test_output_<Name of Category 2>
+
+9. Process the Images! Copy the name of an image in the Category 1 folder of your test folder. Type imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/<Name of Category 1>/<Copied Image Name>.jpg <Insert a New Name for Image>.jpg
 
 
 [View a video explanation here](video link)
