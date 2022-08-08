@@ -1,4 +1,4 @@
-#Project Name
+## Project Name
 Classifying Images Based on Healthy and Unhealthy Skin
 
 This project classifies images based on healthy and unhealthy skin. In a world where many of us may worry about conctracting new illnesses or our friends and family who may have those illnesses, this project serves as a great way to detect if someone may or may not be healthy by observing a certain part of the body: the skin. This project has real-life applications, as it can be an idea used in medical places of work and can be done from a safe distance.
@@ -35,7 +35,15 @@ The algorithm of sorting healthy and unhealthy skin works by first being trained
 
 8. Make a place for our output files to go. Type $DATASET/test_output_<Name of Category 1> $DATASET/test_output_<Name of Category 2>
 
-9. Process the Images! Copy the name of an image in the Category 1 folder of your test folder. Type imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/<Name of Category 1>/<Copied Image Name>.jpg <Insert a New Name for Image>.jpg
+9. Test 1 image. Copy the name of an image in the Category 1 folder of your test folder. Type imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/<Name of Category 1>/<Copied Image Name>.jpg <Insert a New Name for Image>.jpg
+  
+10. Test the rest! Type imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/<Category 1 Name> $DATASET/test_output_<Category 1 Name> - This will test all Category 1 images. 
+  
+Then, type imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/<Category 2 Name> $DATASET/test_output_<Category 2 Name> - This will test all Category 2 images.
+  
+11. Look at the results!! One way to see your results is to go to your JetsonNano file explorer. Go to jetson-inference --> python --> training --> classification --> data - You should then see your 2 output folders! Click on each to see how accurate your AI was! On each image, there will be a text box indicating how close the AI believes your image is related to each of your categories. 
+
+
 
 
 [View a video explanation here](video link)
