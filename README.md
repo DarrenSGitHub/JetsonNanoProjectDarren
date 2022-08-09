@@ -44,4 +44,4 @@ Then, type imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_
 
 
 
-[View a video explanation here](video link)
+[Here is a video detailing how my project works!](https://www.youtube.com/watch?v=BYuahHedKe0&feature=youtu.be)
